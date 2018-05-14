@@ -13,7 +13,4 @@ public class ExecutorServiceProvider implements IExecutorServiceProvider{
 	public ExecutorService provide() {
 		return Executors.newFixedThreadPool(POOL_SIZE);
 	}
-
-
-
 }

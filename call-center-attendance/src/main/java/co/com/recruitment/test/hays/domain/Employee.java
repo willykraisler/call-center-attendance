@@ -10,21 +10,19 @@ public abstract class Employee implements Callable<Boolean>{
 	private long amountOfCalls;
 	private String fullName;
 	private long priority;
+	private Boolean isBusy;
 
 	@Override
 	public Boolean call() throws Exception {
+		
+		isBusy = Boolean.TRUE;
 
 		TimeUnit.MINUTES.sleep(consumeMin);
 		amountOfCalls ++;	
 
-		return Boolean.TRUE;
-	}
-	
-	
-	public Boolean isNotBusy(Employee employee) {
+		isBusy = Boolean.FALSE;
 		
-		
-		return Boolean.TRUE;
+		return Boolean.FALSE;
 	}
 
 	public long getConsumeMin() {
@@ -61,6 +59,14 @@ public abstract class Employee implements Callable<Boolean>{
 
 	public void setPriority(long priority) {
 		this.priority = priority;
+	}
+	
+	public Boolean getIsBusy() {
+		return isBusy;
+	}
+
+	public void setIsBusy(Boolean isBusy) {
+		this.isBusy = isBusy;
 	}
 
 }
