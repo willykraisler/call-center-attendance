@@ -9,12 +9,12 @@ import co.com.recruitment.test.hays.domain.Call;
 public class CallsFactory {
 	
 	public static final int START_INCLUSIVE = 1;
-	public static final int END_EXCLUSIVE = 100;
+
 	public static final String STANDARD_NUMBER = "123456789";
 	
 	
-	public List<Call> startCalls() {
-		 return IntStream.range(START_INCLUSIVE, END_EXCLUSIVE)
+	public List<Call> startCalls(int limit) {
+		 return IntStream.range(START_INCLUSIVE, limit)
 				.mapToObj(this::createCall)
 				.collect(Collectors.toList());				        
 	}

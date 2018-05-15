@@ -2,6 +2,7 @@ package co.com.recruitment.test.hays.domain;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 
 public abstract class Employee implements Callable<Integer>{
 
@@ -18,23 +19,19 @@ public abstract class Employee implements Callable<Integer>{
 	@Override
 	public Integer call() throws Exception {
 
-		synchronized (this) {
-			isBusy = Boolean.TRUE;
-		}		
+		isBusy = Boolean.TRUE;
 
 		try {
 			System.out.println(this.getClass().getSimpleName() + " speaking: " + getFullName() + " - Attending: " + numberAnswered );
 			TimeUnit.SECONDS.sleep(consumeMin);
-			synchronized (this) {
-				amountOfCalls ++;		
-				isBusy = Boolean.FALSE;
-				System.out.println("\n" + this.getClass().getSimpleName()+": " + getFullName() + " - Answered To: " + numberAnswered + " - Time: " + consumeMin + " - Total Calls : " + amountOfCalls);
-			}
+			amountOfCalls ++;		
+			isBusy = Boolean.FALSE;
+			System.out.println("\n" + this.getClass().getSimpleName()+": " + getFullName() + " - Answered To: " + numberAnswered + " - Time: " + consumeMin + " - Total Calls : " + amountOfCalls);
+
 			return id;
 		}catch (InterruptedException e) {			
 			isBusy = Boolean.FALSE;
 			return 0;
-
 		}
 
 	}

@@ -1,13 +1,10 @@
 package co.com.recruitment.test.hays.concurrency;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -19,11 +16,12 @@ import co.com.recruitment.test.hays.domain.Employee;
 
 public class Dispatcher implements IDispatcherService{
 
-	private Queue<Call> callsOnHold;	
+	private Queue<Call> callsOnHold;
 	private ExecutorService executorService;
-	private CallCenter callcenter;
-	private static final int JUST_ONE_SECOND = 0;
-//	private List<Future<Integer>> futures;
+	private CallCenter callcenter;	
+	private static final int JUST_ONE_SECOND = 1;
+
+
 
 	@Inject
 	public Dispatcher(ExecutorServiceProvider executorServiceProvider, CallCenter callcenter){
@@ -37,14 +35,19 @@ public class Dispatcher implements IDispatcherService{
 	public void dispatchCall(Call call) {
 		
 		mustWaitToAssignCall();
-		
 		Optional<Employee> candidate = findSomeOne();
 		
 		if(candidate.isPresent()) {	
+			
+			if(callsOnHold.contains(call)) {
+				callsOnHold.poll();
+			}
 			//Set the time that client needs to solve the problem
 			candidate.get().setConsumeMin(call.getTimeToSolveIssue());
 			candidate.get().setNumberAnswered(call.getNumber());
-			executorService.submit(candidate.get());			
+			executorService.submit(candidate.get());	
+			
+			
 		}else {
 			callsOnHold.add(call);			
 		}
@@ -76,4 +79,39 @@ public class Dispatcher implements IDispatcherService{
 	public Boolean isNotBusy(Employee employee) {		
 		return !employee.getIsBusy();
 	}
+	
+	public Queue<Call> getCallsOnHold() {
+		return callsOnHold;
+	}
+
+	public void setCallsOnHold(Queue<Call> callsOnHold) {
+		this.callsOnHold = callsOnHold;
+	}
+	public ExecutorService getExecutorService() {
+		return executorService;
+	}
+
+	public void setExecutorService(ExecutorService executorService) {
+		this.executorService = executorService;
+	}
+
+	@Override
+	public Queue<Call> getQueue() {
+		return getCallsOnHold();
+	}
+
+	@Override
+	public CallCenter getCallCenter() {
+		return getCallcenter();
+	}
+	
+	public CallCenter getCallcenter() {
+		return callcenter;
+	}
+
+	@Override
+	public ExecutorService getExecutor() {	
+		return getExecutor();
+	}
+	
 }

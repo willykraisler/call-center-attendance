@@ -23,10 +23,14 @@ public class CallCenterClient {
 		//Get whole calls 
 		CallsFactory callsFactory = new CallsFactory();			
 
-		//Incoming calls
-		callsFactory.startCalls().stream()
+		//Incoming ten calls
+		callsFactory.startCalls(10).stream()
 		.filter(Objects::nonNull)
-		.forEach(call ->  dispatcher.dispatchCall(call));
+		.forEach(call ->  {			
+			do {
+				dispatcher.dispatchCall(call);				
+			} while (!dispatcher.getQueue().isEmpty());
+		});
 
 	}
 
