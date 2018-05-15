@@ -3,7 +3,6 @@ package co.com.recruitment.test.hays.domain;
 public class Call {
 	
 	private String number;
-	private String username;
 	private int timeToSolveIssue;
 	
 		
@@ -19,11 +18,6 @@ public class Call {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}	
+
 
 }

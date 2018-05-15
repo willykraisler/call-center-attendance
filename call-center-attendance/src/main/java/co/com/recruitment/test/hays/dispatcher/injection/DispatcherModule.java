@@ -2,14 +2,19 @@ package co.com.recruitment.test.hays.dispatcher.injection;
 
 import com.google.inject.AbstractModule;
 
+import co.com.recruitment.test.hays.concurrency.CallCenter;
 import co.com.recruitment.test.hays.concurrency.Dispatcher;
+import co.com.recruitment.test.hays.concurrency.ExecutorServiceProvider;
 import co.com.recruitment.test.hays.concurrency.interfaces.IDispatcherService;
+import co.com.recruitment.test.hays.concurrency.interfaces.IExecutorServiceProvider;
 
 public class DispatcherModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		bind(IDispatcherService.class).to(Dispatcher.class);		
+		bind(CallCenter.class);
+		bind(IDispatcherService.class).to(Dispatcher.class);
+		bind(IExecutorServiceProvider.class).to(ExecutorServiceProvider.class);
 	}
 	
 

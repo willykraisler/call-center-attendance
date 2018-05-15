@@ -1,116 +1,118 @@
 package co.com.recruitment.test.hays.concurrency;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Map;
 
-import co.com.recruitment.test.hays.domain.Call;
 import co.com.recruitment.test.hays.domain.Director;
 import co.com.recruitment.test.hays.domain.Employee;
 import co.com.recruitment.test.hays.domain.Operator;
 import co.com.recruitment.test.hays.domain.Supervisor;
-import co.com.recruitment.test.hays.util.RandomUtil;
 
 public class CallCenter {	
 
-	public static final int START_INCLUSIVE = 1;
-	public static final int END_EXCLUSIVE = 11;
-	public static final String STANDARD_NUMBER = "123456789";
-	
-
+	private Map<Integer,Employee> employeesCache;
 	private List<Employee> employees;
-	
 
 	public void hireStaff() {
 
+		employeesCache = new HashMap<>();
 		employees = new ArrayList<>();
 
 		Employee employee = new Director();		
-		employee.setAmountOfCalls(0);
+		employee.setId(1);
+		employee.setAmountOfCalls(0);		
 		employee.setFullName("Manuel Arango");
 		employee.setPriority(3);
+		
+		
+		employeesCache.put(employee.getId(),employee);		
 
-		employees.add(employee);		
-
-		employee = new Supervisor();		
+		employee = new Supervisor();
+		employee.setId(2);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Hugo Prieto");
 		employee.setPriority(2);
 
-		employees.add(employee);		
+		employeesCache.put(employee.getId(),employee);		
 
-		employee = new Supervisor();		
+		employee = new Supervisor();
+		employee.setId(3);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Natalia Grisales");
 		employee.setPriority(2);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(4);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Jenny Rabelo");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(5);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Maria Diaz");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(6);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Juan Manrique");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(7);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Daniel Castellanos");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(8);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Samuel de los Rios");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(9);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Eduardo Carrillo");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();		
+		employee = new Operator();
+		employee.setId(10);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("William Pinilla");
 		employee.setPriority(1);
 
-		employees.add(employee);
+		employeesCache.put(employee.getId(),employee);
+		
+		employees.addAll(employeesCache.values());
 
-		System.out.println(":::Staff hired:: Nice!");	
+		System.out.println(":::Staff is working:: Nice!");	
 
 	}	
-
-	public List<Call> startCalls() {
-		 return IntStream.range(START_INCLUSIVE, END_EXCLUSIVE)
-				.mapToObj(this::createCall)
-				.collect(Collectors.toList());				        
-	}
 	
-	private Call createCall(int c) {		
-		Call call = new Call();		
-		call.setNumber(STANDARD_NUMBER.concat(String.valueOf(c)));
-		call.setTimeToSolveIssue(RandomUtil.getCallDuration());		
-		return call;
+	public Map<Integer, Employee> getEmployeesCache() {
+		return employeesCache;
+	}
+
+	public void setEmployeesCache(Map<Integer, Employee> employeesCache) {
+		this.employeesCache = employeesCache;
 	}
 	
 	public List<Employee> getEmployees() {
@@ -120,6 +122,7 @@ public class CallCenter {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
+
 	
 
 }
