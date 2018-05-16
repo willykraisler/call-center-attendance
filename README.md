@@ -7,6 +7,8 @@
 - Maven 3
 
 # Compilation
+It shows the test with the prints to show how it works
+
 ```shell
 $ mvn clean && mvn -U install
 
