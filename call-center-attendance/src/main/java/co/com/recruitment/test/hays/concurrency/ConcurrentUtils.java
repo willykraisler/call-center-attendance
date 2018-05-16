@@ -1,10 +1,7 @@
-package co.com.recruitment.test.hays.util;
+package co.com.recruitment.test.hays.concurrency;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-
-import co.com.recruitment.test.hays.domain.Call;
 
 public class ConcurrentUtils {
 	

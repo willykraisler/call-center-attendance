@@ -1,6 +1,6 @@
 package co.com.recruitment.test.hays.util;
 
-public enum Rol {
+public enum Role {
 	DIRECTOR,
 	SUPERVISOR,
 	OPERATOR

@@ -1,7 +1,10 @@
 package co.com.recruitment.test.hays.concurrency.interfaces;
 
-import java.util.concurrent.ExecutorService;
-
+/**
+ * Contract to provide a Executor service 
+ * @author andres
+ *
+ */
 public interface IExecutorServiceProvider {
-	public ExecutorService provide();
+	public void provide();
 }
