@@ -1,5 +1,5 @@
 # call-center-attendance
-    This the programming test in almundo.com
+    This is code test in almundo.com
 
 # System requirements
 
