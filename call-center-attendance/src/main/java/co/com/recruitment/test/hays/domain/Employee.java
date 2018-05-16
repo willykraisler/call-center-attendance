@@ -2,15 +2,18 @@ package co.com.recruitment.test.hays.domain;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 
-public abstract class Employee implements Callable<Integer>{
+import co.com.recruitment.test.hays.util.RandomUtil;
+import co.com.recruitment.test.hays.util.Rol;
+
+public class Employee implements Callable<Integer>{
 
 
-	private long consumeMin;
+	private long usedSeconds;
 	private Integer id;
 	private long amountOfCalls;
 	private String fullName;
+	private Rol rol;
 	private String numberAnswered;
 	private long priority;
 	private Boolean isBusy = Boolean.FALSE;
@@ -20,31 +23,23 @@ public abstract class Employee implements Callable<Integer>{
 	public Integer call() throws Exception {
 
 		isBusy = Boolean.TRUE;
-
-		try {
-			System.out.println(this.getClass().getSimpleName() + " speaking: " + getFullName() + " - Attending: " + numberAnswered );
-			TimeUnit.SECONDS.sleep(consumeMin);
-			amountOfCalls ++;		
-			isBusy = Boolean.FALSE;
-			System.out.println("\n" + this.getClass().getSimpleName()+": " + getFullName() + " - Answered To: " + numberAnswered + " - Time: " + consumeMin + " - Total Calls : " + amountOfCalls);
-
-			return id;
+		System.out.println(getRol().name() + " speaking: " + getFullName() + " - Attending: " + getNumberAnswered());		
+		setUsedSeconds(RandomUtil.getCallDuration());
+		
+		try {			
+			TimeUnit.SECONDS.sleep(getUsedSeconds());			
 		}catch (InterruptedException e) {			
 			isBusy = Boolean.FALSE;
 			return 0;
 		}
+		
+		amountOfCalls++;		
+		System.out.println("\n" + getRol().name() +": " + getFullName() + " - Answered To: " + numberAnswered + " - Time: " + usedSeconds + " - Total Calls : " + amountOfCalls);
+		isBusy = Boolean.FALSE;
+		
+		return 1;
 
 	}
-
-	public long getConsumeMin() {
-		return consumeMin;
-	}
-
-
-	public void setConsumeMin(long consumeMin) {
-		this.consumeMin = consumeMin;
-	}
-
 
 	public long getAmountOfCalls() {
 		return amountOfCalls;
@@ -94,6 +89,23 @@ public abstract class Employee implements Callable<Integer>{
 
 	public void setNumberAnswered(String numberAnswered) {
 		this.numberAnswered = numberAnswered;
+	}
+	
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+	
+	
+	public long getUsedSeconds() {
+		return usedSeconds;
+	}
+
+	public void setUsedSeconds(long usedSeconds) {
+		this.usedSeconds = usedSeconds;
 	}
 
 }

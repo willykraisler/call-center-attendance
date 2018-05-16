@@ -21,8 +21,6 @@ public class Dispatcher implements IDispatcherService{
 	private CallCenter callcenter;	
 	private static final int JUST_ONE_SECOND = 1;
 
-
-
 	@Inject
 	public Dispatcher(ExecutorServiceProvider executorServiceProvider, CallCenter callcenter){
 		executorService  = executorServiceProvider.provide();
@@ -37,22 +35,15 @@ public class Dispatcher implements IDispatcherService{
 		mustWaitToAssignCall();
 		Optional<Employee> candidate = findSomeOne();
 		
-		if(candidate.isPresent()) {	
-			
+		if(candidate.isPresent()){			
 			if(callsOnHold.contains(call)) {
 				callsOnHold.poll();
-			}
-			//Set the time that client needs to solve the problem
-			candidate.get().setConsumeMin(call.getTimeToSolveIssue());
+			}				
 			candidate.get().setNumberAnswered(call.getNumber());
-			executorService.submit(candidate.get());	
-			
-			
+			executorService.submit(candidate.get());			
 		}else {
 			callsOnHold.add(call);			
-		}
-			
-			
+		}		
 	}
 
 	private void mustWaitToAssignCall() {
@@ -61,15 +52,13 @@ public class Dispatcher implements IDispatcherService{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-	
+	}	
 
 	public Optional<Employee> findSomeOne() {
 		return getFreeEmployee()
 				.sorted(Comparator.comparing(Employee::getPriority))
 				.findFirst();
 	}
-
 
 	public Stream<Employee> getFreeEmployee() {
 		return  callcenter.getEmployees().stream()

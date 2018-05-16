@@ -5,10 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import co.com.recruitment.test.hays.domain.Director;
 import co.com.recruitment.test.hays.domain.Employee;
-import co.com.recruitment.test.hays.domain.Operator;
-import co.com.recruitment.test.hays.domain.Supervisor;
+import co.com.recruitment.test.hays.util.Rol;
 
 public class CallCenter {	
 
@@ -20,8 +18,9 @@ public class CallCenter {
 		employeesCache = new HashMap<>();
 		employees = new ArrayList<>();
 
-		Employee employee = new Director();		
-		employee.setId(1);
+		Employee employee = new Employee();		
+		employee.setId(1);	
+		employee.setRol(Rol.DIRECTOR);
 		employee.setAmountOfCalls(0);		
 		employee.setFullName("Manuel Arango");
 		employee.setPriority(3);
@@ -29,72 +28,81 @@ public class CallCenter {
 		
 		employeesCache.put(employee.getId(),employee);		
 
-		employee = new Supervisor();
+		employee = new Employee();
 		employee.setId(2);
+		employee.setRol(Rol.DIRECTOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Hugo Prieto");
 		employee.setPriority(2);
 
 		employeesCache.put(employee.getId(),employee);		
 
-		employee = new Supervisor();
+		employee = new Employee();
 		employee.setId(3);
+		employee.setRol(Rol.SUPERVISOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Natalia Grisales");
 		employee.setPriority(2);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(4);
+		employee.setRol(Rol.SUPERVISOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Jenny Rabelo");
 		employee.setPriority(1);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(5);
+		employee.setRol(Rol.OPERATOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Maria Diaz");
 		employee.setPriority(1);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(6);
+		employee.setRol(Rol.OPERATOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Juan Manrique");
 		employee.setPriority(1);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(7);
+		employee.setRol(Rol.OPERATOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Daniel Castellanos");
 		employee.setPriority(1);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(8);
+		employee.setRol(Rol.OPERATOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Samuel de los Rios");
 		employee.setPriority(1);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(9);
+		employee.setRol(Rol.OPERATOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Eduardo Carrillo");
 		employee.setPriority(1);
 
 		employeesCache.put(employee.getId(),employee);
 
-		employee = new Operator();
+		employee = new Employee();
 		employee.setId(10);
+		employee.setRol(Rol.OPERATOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("William Pinilla");
 		employee.setPriority(1);

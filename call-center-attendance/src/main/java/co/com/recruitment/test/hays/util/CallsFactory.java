@@ -21,8 +21,7 @@ public class CallsFactory {
 	
 	private Call createCall(int c) {		
 		Call call = new Call();		
-		call.setNumber(STANDARD_NUMBER.concat(String.valueOf(c)));
-		call.setTimeToSolveIssue(RandomUtil.getCallDuration());		
+		call.setNumber(STANDARD_NUMBER.concat(String.valueOf(c)));		
 		return call;
 	}
 
