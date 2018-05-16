@@ -16,12 +16,12 @@ $ mvn clean && mvn -U install
 ## How did I resolve the problem (Optional)
 
 I used a thread execution service to send calls to execute on demand
-those callable are employed because they will answer the calls and they should
-Wait to solve the client's problem.
+those callable are Employee class because they will answer the calls and They should
+wait to solve the client's problem.
 
-Dispatcher class has the ability to make someone who is not busy attend the call
-if someone enables it to send the call, otherwise the class Dispatcher has a queue with the wait
-call until someone can attend them.
+Dispatcher class has the ability to make someone who is not busy to attend the call
+if someone is enabled to answer the call the dispatcher submit the employee with that call, 
+otherwise the class Dispatcher has a queue with the calls on hold until someone can attend them.
 
 how it shows the next test receives the calls and traverses sequentially calling until someone responds
 after that, it must verify the amounts of calls between the roles to verify that the operator was the
