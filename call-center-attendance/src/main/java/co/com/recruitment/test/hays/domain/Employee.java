@@ -9,13 +9,13 @@ import co.com.recruitment.test.hays.util.Rol;
 public class Employee implements Callable<Integer>{
 
 
-	private long usedSeconds;
+	private int usedSeconds;
 	private Integer id;
-	private long amountOfCalls;
+	private int amountOfCalls;
 	private String fullName;
 	private Rol rol;
 	private String numberAnswered;
-	private long priority;
+	private int priority;
 	private Boolean isBusy = Boolean.FALSE;
 
 
@@ -41,12 +41,12 @@ public class Employee implements Callable<Integer>{
 
 	}
 
-	public long getAmountOfCalls() {
+	public int getAmountOfCalls() {
 		return amountOfCalls;
 	}
 
 
-	public void setAmountOfCalls(long amountOfCalls) {
+	public void setAmountOfCalls(int amountOfCalls) {
 		this.amountOfCalls = amountOfCalls;
 	}
 
@@ -59,11 +59,11 @@ public class Employee implements Callable<Integer>{
 		this.fullName = fullName;
 	}
 
-	public long getPriority() {
+	public int getPriority() {
 		return priority;
 	}
 
-	public void setPriority(long priority) {
+	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 
@@ -100,11 +100,11 @@ public class Employee implements Callable<Integer>{
 	}
 	
 	
-	public long getUsedSeconds() {
+	public int getUsedSeconds() {
 		return usedSeconds;
 	}
 
-	public void setUsedSeconds(long usedSeconds) {
+	public void setUsedSeconds(int usedSeconds) {
 		this.usedSeconds = usedSeconds;
 	}
 

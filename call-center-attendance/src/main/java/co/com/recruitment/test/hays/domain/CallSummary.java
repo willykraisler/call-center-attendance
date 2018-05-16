@@ -6,6 +6,7 @@ public class CallSummary {
 	private String totalCall;
 	private String clientName;
 	private String timeConsume;
+	
 	public String getEmployeeName() {
 		return employeeName;
 	}

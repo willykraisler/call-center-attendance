@@ -2,9 +2,12 @@ package co.com.recruitment.test.hays.util;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+
+import co.com.recruitment.test.hays.domain.Call;
 
 public class ConcurrentUtils {
-
+	
 	
 	public static void stop(ExecutorService executor) {
         try {

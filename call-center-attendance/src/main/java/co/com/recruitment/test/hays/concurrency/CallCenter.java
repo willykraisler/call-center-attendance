@@ -33,7 +33,7 @@ public class CallCenter {
 		employee.setRol(Rol.DIRECTOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Hugo Prieto");
-		employee.setPriority(2);
+		employee.setPriority(3);
 
 		employeesCache.put(employee.getId(),employee);		
 
@@ -51,16 +51,16 @@ public class CallCenter {
 		employee.setRol(Rol.SUPERVISOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Jenny Rabelo");
-		employee.setPriority(1);
+		employee.setPriority(2);
 
 		employeesCache.put(employee.getId(),employee);
 
 		employee = new Employee();
 		employee.setId(5);
-		employee.setRol(Rol.OPERATOR);
+		employee.setRol(Rol.SUPERVISOR);
 		employee.setAmountOfCalls(0);
 		employee.setFullName("Maria Diaz");
-		employee.setPriority(1);
+		employee.setPriority(2);
 
 		employeesCache.put(employee.getId(),employee);
 

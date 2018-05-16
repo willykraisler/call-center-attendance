@@ -19,7 +19,7 @@ public class Dispatcher implements IDispatcherService{
 	private Queue<Call> callsOnHold;
 	private ExecutorService executorService;
 	private CallCenter callcenter;	
-	private static final int JUST_ONE_SECOND = 1;
+	private static final int JUST_ONE_SECOND = 700;
 
 	@Inject
 	public Dispatcher(ExecutorServiceProvider executorServiceProvider, CallCenter callcenter){
@@ -48,7 +48,7 @@ public class Dispatcher implements IDispatcherService{
 
 	private void mustWaitToAssignCall() {
 		try {
-			TimeUnit.SECONDS.sleep(JUST_ONE_SECOND);
+			TimeUnit.MILLISECONDS.sleep(JUST_ONE_SECOND);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
