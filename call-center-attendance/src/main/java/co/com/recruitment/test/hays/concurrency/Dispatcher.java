@@ -20,7 +20,7 @@ import co.com.recruitment.test.hays.util.CallCenter;
  */
 public class Dispatcher implements IDispatcherService{
 
-	private static final int JUST_ONE_SECOND = 600;
+	private static final int JUST_ONE_SECOND = 700;
 	private Queue<Call> callsOnHold = new LinkedList<>();
 	private ExecutorService executorService;
 	private CallCenter callcenter;	
