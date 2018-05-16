@@ -10,6 +10,7 @@
 It shows the tests with the prints to show how it works
 
 ```shell
+$ cd call-center-attendance/
 $ mvn clean && mvn -U install
 
 ```
